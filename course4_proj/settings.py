@@ -47,10 +47,12 @@ class Dev(Configuration):
         'django.contrib.messages',
         'django.contrib.staticfiles',
         'movies',
+        'django_celery_results',
     ]
-
+    CELERY_RESULT_BACKEND = "django-db"
+    CELERY_BROKER_URL = "redis://localhost:6379/0"
     MIDDLEWARE = [
-        'django_toolbar.middleware.DebugToolbarMiddleware',
+        # 'django_toolbar.middleware.DebugToolbarMiddleware',
         'django.middleware.security.SecurityMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
